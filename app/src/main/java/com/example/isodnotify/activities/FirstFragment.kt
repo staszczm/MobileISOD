@@ -40,9 +40,9 @@ class FirstFragment : Fragment() {
 
         binding.buttonFirst.setOnClickListener {
             val username = binding.usernameEditText.text.toString()
-            val password = binding.apikeyEditText.text.toString()
+            val apiKey = binding.apikeyEditText.text.toString()
 
-            if(loginValidator.validate(username, password)) {
+            if(loginValidator.validate(username, apiKey)) {
                 findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
             } else {
                 Toast.makeText(context, "Invalid username or password", Toast.LENGTH_SHORT).show()
