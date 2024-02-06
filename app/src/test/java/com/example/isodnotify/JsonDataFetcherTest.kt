@@ -1,36 +1,51 @@
 package com.example.isodnotify
 
 import com.example.isodnotify.utils.JsonDataFetcher
+import com.example.isodnotify.utils.NotifyInformations
 import org.junit.Test
+
 import org.junit.Assert.*
+import org.junit.Before
 import org.mockito.Mockito
 
 class JsonDataFetcherTest {
+
+    private lateinit var name: String
+    private lateinit var apiKey: String
+    @Before
+    fun setUp() {
+        name = System.getenv("ISOD_USERNAME")
+        apiKey = System.getenv("ISOD_API")
+    }
     @Test
     fun getJsonDataFromUrl() {
-        val name = System.getenv("ISOD_USERNAME")
-        val apiKey = System.getenv("ISOD_API")
+        //given
         val expectedJson = """{"items":[{"hash":"mock_hash","subject":"mock_subject","modifiedDate":"mock_date","modifiedBy":"mock_user","attachments":[],"noAttachments":0,"type":1002}],"username":"mock_username","semester":"mock_semester","firstname":"mock_firstname","lastname":"mock_lastname","studentNo":"mock_studentNo"}"""
 
+        //when
         val mockFetcher = Mockito.mock(JsonDataFetcher::class.java)
         Mockito.`when`(mockFetcher.getJsonDataFromUrl(mockFetcher.createUrlFromNameAndApi(name, apiKey))).thenReturn(expectedJson)
 
+        //then
         assertEquals(expectedJson, mockFetcher.getJsonDataFromUrl(mockFetcher.createUrlFromNameAndApi(name, apiKey)))
     }
 
-    //@Test
+    @Test
     fun getHashAndSubject(){
-        val name = System.getenv("ISOD_USERNAME")
-        val apiKey = System.getenv("ISOD_API")
+        //given
         val mockFetcher = Mockito.mock(JsonDataFetcher::class.java)
-        val url = mockFetcher.createUrlFromNameAndApi(name, apiKey)
+        val url = "mock_url"
         val jsonString = """{"items":[{"hash":"mock_hash","subject":"mock_subject","modifiedDate":"mock_date","modifiedBy":"mock_user","attachments":[],"noAttachments":0,"type":1002}],"username":"mock_username","semester":"mock_semester","firstname":"mock_firstname","lastname":"mock_lastname","studentNo":"mock_studentNo"}"""
+        val expectedNotifyInformations = NotifyInformations("mock_hash", "mock_subject", "mock_user")
 
+        Mockito.`when`(mockFetcher.createUrlFromNameAndApi(name, apiKey)).thenReturn(url)
         Mockito.`when`(mockFetcher.getJsonDataFromUrl(url)).thenReturn(jsonString)
-        val (hash, subject, modifiedBy) = mockFetcher.getImportantInformation(jsonString)
+        Mockito.`when`(mockFetcher.getImportantInformation(jsonString)).thenReturn(expectedNotifyInformations)
 
-        assertEquals("mock_hash", hash)
-        assertEquals("mock_subject", subject)
-        assertEquals("mock_user", modifiedBy)
+        //when
+        val notifyInformations = mockFetcher.getImportantInformation(jsonString)
+
+        //then
+        assertEquals(expectedNotifyInformations, notifyInformations)
     }
 }
