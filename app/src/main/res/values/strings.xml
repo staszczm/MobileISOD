@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Isodnotify</string>
+    <string name="app_name">ISODnotify</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">Kutong</string>
@@ -9,4 +9,11 @@
 
     <string name="hello_first_fragment">tu mial byc kutong</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="welcome">Witaj,</string>
+    <string name="log_to_continue">Zaloguj się by kontynuować</string>
+    <string name="user_name">Nazwa użytkownika</string>
+    <string name="api_key">Klucz API</string>
+    <string name="where_api_key">Gdzie znaleźć klucz API?</string>
+    <string name="log_in">Zaloguj</string>
+    <string name="l">zaloguJ</string>
 </resources>

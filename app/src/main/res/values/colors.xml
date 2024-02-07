@@ -7,4 +7,27 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+<!-- GENERAL COLORS -->
+    <color name="white_main">#EBE5DA</color>
+    <color name="black_main">#1B1B1B</color>
+
+<!-- LIGHT MODE COLORS-->
+    <color name="white_100">#E3D7C1</color>
+    <color name="white_200">#D1C0A0</color>
+
+    <color name="brown_100">#9D8C6D</color>
+    <color name="brown_200">#817359</color>
+
+    <color name="yellow_200">#F0BC6E</color>
+    <color name="yellow_300">#E2B167</color>
+
+<!-- DARK MODE COLORS-->
+    <color name="black_100">#716D62</color>
+    <color name="black_200">#4F4D4B</color>
+    <color name="black_300">#363538</color>
+
+    <color name="yellow_100">#EFC079</color>
+    <color name="yellow_400">#D1A157</color>
+
 </resources>
