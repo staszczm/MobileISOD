@@ -10,6 +10,10 @@ import androidx.navigation.fragment.findNavController
 import com.example.isodnotify.R
 import com.example.isodnotify.databinding.FragmentFirstBinding
 import com.example.isodnotify.utils.LoginValidator
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
+import android.content.Context
+import com.example.isodnotify.utils.IsodApiRetriver
 
 
 /**
@@ -36,13 +40,18 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val loginValidator = LoginValidator()
-
         binding.buttonFirst.setOnClickListener {
+            val loginValidator = LoginValidator()
             val username = binding.usernameEditText.text.toString()
             val apiKey = binding.apikeyEditText.text.toString()
 
-            if(loginValidator.validate(username, apiKey)) {
+            println("Username: $username")
+            println("API Key: $apiKey")
+
+            IsodApiRetriver(username, apiKey).execute()
+
+
+            if (loginValidator.validate(username, apiKey)) {
                 findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
             } else {
                 Toast.makeText(context, "Invalid username or password", Toast.LENGTH_SHORT).show()
