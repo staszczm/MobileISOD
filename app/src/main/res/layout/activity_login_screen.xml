@@ -54,10 +54,11 @@
                 android:paddingRight="25dp" android:textColorHint="@color/brown_100"/>
         <TextView
                 android:text="@string/where_api_key"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/whereToApiText" android:textAlignment="textEnd"
                 android:layout_marginBottom="60dp" android:textSize="14sp" android:fontFamily="@font/sf_regular"
-                android:textColor="@color/brown_200"/>
+                android:textColor="@color/brown_200" android:layout_gravity="right"
+                android:onClick="whereToApiTextOnClick"/>
 
         <Button
                 android:text="@string/log_in"
