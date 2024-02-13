@@ -20,6 +20,8 @@ class LoginScreen : AppCompatActivity() {
 
 
 
+
+
 //  *** Funkcja do otwierania strony gdzie jest API key ***
 
     fun whereToApiTextOnClick(view: View) {
