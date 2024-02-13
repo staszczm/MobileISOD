@@ -1,12 +1,11 @@
-package com.example.isodnotify
+package com.example.isodnotify.utils
 
-import com.example.isodnotify.utils.JsonDataFetcher
-import com.example.isodnotify.utils.NotifyInformations
 import org.junit.Test
 
 import org.junit.Assert.*
 import org.junit.Before
 import org.mockito.Mockito
+import java.util.Date
 
 class JsonDataFetcherTest {
 
@@ -36,7 +35,7 @@ class JsonDataFetcherTest {
         val mockFetcher = Mockito.mock(JsonDataFetcher::class.java)
         val url = "mock_url"
         val jsonString = """{"items":[{"hash":"mock_hash","subject":"mock_subject","modifiedDate":"mock_date","modifiedBy":"mock_user","attachments":[],"noAttachments":0,"type":1002}],"username":"mock_username","semester":"mock_semester","firstname":"mock_firstname","lastname":"mock_lastname","studentNo":"mock_studentNo"}"""
-        val expectedNotifyInformations = NotifyInformations("mock_hash", "mock_subject", "mock_user")
+        val expectedNotifyInformations = AnnouncementData("mock_hash", "mock_subject", "mock_user", Date("mock_date"))
 
         Mockito.`when`(mockFetcher.createUrlFromNameAndApi(name, apiKey)).thenReturn(url)
         Mockito.`when`(mockFetcher.getJsonDataFromUrl(url)).thenReturn(jsonString)
