@@ -9,12 +9,9 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.isodnotify.R
 import com.example.isodnotify.databinding.FragmentFirstBinding
-import com.example.isodnotify.utils.LoginValidator
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
-import android.content.Context
 import android.util.Log
-import com.example.isodnotify.utils.IsodApiRetriver
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.net.URL
@@ -76,7 +73,6 @@ class FirstFragment : Fragment() {
                 Log.e("FirstFragment", "Error: $e")
                 false
             }
-
         }
     }
 }
