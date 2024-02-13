@@ -36,22 +36,21 @@
                 android:textColor="@color/black_main" android:fontFamily="@font/sf_medium"
                 android:layout_marginBottom="120dp"/>
         <EditText
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/log_screen_tiles_height"
+                style="@style/LogInInputTile"
+                android:id="@+id/usernameInputTile"
                 android:inputType="text"
-                android:ems="10"
-                android:id="@+id/usernameInputTile" android:layout_marginBottom="40dp" android:autofillHints=""
-                android:hint="@string/user_name" android:background="@drawable/lm_log_input_tile"
-                android:paddingLeft="25dp" android:paddingRight="25dp" android:textColorHint="@color/brown_100"/>
+                android:layout_marginBottom="40dp"
+                android:autofillHints=""
+                android:hint="@string/user_name"
+                />
         <EditText
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/log_screen_tiles_height"
+                style="@style/LogInInputTile"
+                android:id="@+id/apiKeyInputTile"
+                android:hint="@string/api_key"
                 android:inputType="textPassword"
-                android:ems="10"
-                android:id="@+id/apiKeyInputTile" android:layout_marginBottom="10dp"
-                android:hint="@string/api_key" android:autofillHints=""
-                android:background="@drawable/lm_log_input_tile" android:paddingLeft="25dp"
-                android:paddingRight="25dp" android:textColorHint="@color/brown_100"/>
+                android:autofillHints=""
+                android:layout_marginBottom="10dp"
+        />
         <TextView
                 android:text="@string/where_api_key"
                 android:layout_width="wrap_content"
@@ -67,7 +66,7 @@
                 android:background="@drawable/lm_button" android:textSize="24sp"
                 android:fontFamily="@font/sf_medium" android:textAllCaps="false" android:textColor="@color/black_main"
                 android:layout_marginBottom="10dp"
-                style="?android:attr/borderlessButtonStyle"/>
+                style="?android:attr/borderlessButtonStyle" android:onClick="logIn"/>
 
 
     </LinearLayout>

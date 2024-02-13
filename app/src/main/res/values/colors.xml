@@ -8,26 +8,35 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-<!-- GENERAL COLORS -->
     <color name="white_main">#EBE5DA</color>
     <color name="black_main">#1B1B1B</color>
 
-<!-- LIGHT MODE COLORS-->
-    <color name="white_100">#E3D7C1</color>
-    <color name="white_200">#D1C0A0</color>
+    <color name="white_100">#FDFAF4</color>
+    <color name="white_200">#E3D7C1</color>
+    <color name="white_300">#D6C6AC</color>
+    <color name="white_400">#D1C0A0</color>
 
     <color name="brown_100">#9D8C6D</color>
     <color name="brown_200">#817359</color>
+    <color name="brown_300">#64563D</color>
+    <color name="brown_400">#463B26</color>
 
-    <color name="yellow_200">#F0BC6E</color>
-    <color name="yellow_300">#E2B167</color>
-
-<!-- DARK MODE COLORS-->
     <color name="black_100">#716D62</color>
     <color name="black_200">#4F4D4B</color>
     <color name="black_300">#363538</color>
+    <color name="black_400">#252426</color>
 
     <color name="yellow_100">#EFC079</color>
+    <color name="yellow_200">#F0BC6E</color>
+    <color name="yellow_300">#E2B167</color>
     <color name="yellow_400">#D1A157</color>
+
+    <color name="red_100">#F0BEB3</color>
+    <color name="red_200">#E36B51</color>
+    <color name="red_300">#AB5846</color>
+    <color name="light_blue_400">#FF29B6F6</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="gray_400">#FFBDBDBD</color>
+    <color name="gray_600">#FF757575</color>
 
 </resources>
