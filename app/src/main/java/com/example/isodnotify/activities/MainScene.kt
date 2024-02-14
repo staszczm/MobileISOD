@@ -11,8 +11,9 @@ class MainScene : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainSceneBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_main_scene)
+        setContentView(binding.root)
 
+        binding.welcomeText.text = "Cześć, " + intent.getStringExtra("USER_NAME")
 
     }
 
