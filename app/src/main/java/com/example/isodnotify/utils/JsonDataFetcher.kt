@@ -2,8 +2,6 @@ package com.example.isodnotify.utils
 
 import org.json.JSONObject
 import java.net.URL
-import java.text.SimpleDateFormat
-import java.util.Locale
 
 interface JsonDataFetcher<T> {
     val name: String
