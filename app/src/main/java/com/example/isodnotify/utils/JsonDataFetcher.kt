@@ -6,11 +6,26 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 
 interface JsonDataFetcher<T> {
-    fun createUrlFromNameAndApi(name: String, apiKey: String): String {
-        return "https://isod.ee.pw.edu.pl/isod-portal/wapi?q=mynewsheaders&username=$name&apikey=$apiKey&to=1"
+    val name: String
+    val apiKey: String
+    fun getQueryParameters(): String
+    fun getJsonArrayName(): String
+    private fun createUrlFromNameAndApi(): String {
+        return "https://isod.ee.pw.edu.pl/isod-portal/wapi?q=${getQueryParameters()}&username=$name&apikey=$apiKey"
     }
-    fun getJsonDataFromUrl(url: String): String{
+    private suspend fun getJsonDataFromUrl(url: String): String{
         return URL(url).readText()
     }
-    fun getImportantInformation(jsonString: String): T
+    fun getAllData(): List<T>{
+        val itemsArray = JSONObject().getJSONArray(getJsonArrayName())
+        val itemsList = mutableListOf<T>()
+
+        for (i in 0 until itemsArray.length()) {
+            val item = itemsArray.getJSONObject(i)
+            itemsList.add( getImportantInformation(item) )
+        }
+        return itemsList
+    }
+    fun getImportantInformation(item: JSONObject): T
+
 }
