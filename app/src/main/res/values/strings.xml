@@ -22,4 +22,8 @@
     <string name="job_offers">Oferty pracy</string>
     <string name="news_title" tools:ignore="ExtraTranslation">Aktualności</string>
     <string name="upcoming_classes">Najbliższe zajęcia</string>
+    <string name="time1">8:15</string>
+    <string name="time2">10:00</string>
+    <string name="subject_name">Nazwa przedmiotu</string>
+    <string name="building_name">Sala</string>
 </resources>

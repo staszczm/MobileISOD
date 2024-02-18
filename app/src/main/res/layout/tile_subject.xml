@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:background="@drawable/lm_tile_subject"
+        android:paddingLeft="20dp" android:paddingTop="13dp"
+        android:paddingRight="20dp" android:paddingBottom="13dp"
+        android:layout_height="100dp"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="63dp"
+                android:layout_height="match_parent" android:background="@drawable/lm_stroke_tile_subject">
+
+            <TextView
+                    android:text="@string/time1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/startTime"
+                    app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" android:textSize="12sp"
+                    android:textColor="@color/brown_200" android:fontFamily="@font/sf_medium"/>
+            <TextView
+                    android:text="@string/time2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp" android:id="@+id/endTime"
+                    app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" android:textSize="12sp"
+                    android:fontFamily="@font/sf_medium" android:textColor="@color/brown_200"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="74dp">
+
+            <TextView
+                    android:text="@string/subject_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/subjectName"
+                    app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
+                    android:fontFamily="@font/sf_bold" android:textSize="14sp" android:textColor="@color/brown_400"
+                    android:layout_marginStart="10dp"/>
+            <TextView
+                    android:text="@string/building_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/buildingName"
+                    app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginStart="10dp" android:textSize="14sp" android:fontFamily="@font/sf_regular"
+                    android:textColor="@color/brown_300"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

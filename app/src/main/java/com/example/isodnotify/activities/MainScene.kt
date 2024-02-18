@@ -2,6 +2,10 @@ package com.example.isodnotify.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.LinearLayout
 import androidx.viewpager2.widget.ViewPager2
 import com.example.isodnotify.R
 import com.example.isodnotify.databinding.ActivityMainSceneBinding
@@ -17,7 +21,10 @@ class MainScene : AppCompatActivity() {
         binding = ActivityMainSceneBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.welcomeText.text = "Cześć, " + intent.getStringExtra("USER_NAME")
+        if(intent.hasExtra("USER_NAME")) {
+            binding.welcomeText.text = "Cześć, " + intent.getStringExtra("USER_NAME")
+        }
+
 
         postToList()
         binding.viewPager.adapter = ViewPagerAdapter(titlesList)
@@ -25,6 +32,28 @@ class MainScene : AppCompatActivity() {
 
         val indicator = findViewById<CircleIndicator3>(R.id.indicator)
         indicator.setViewPager(binding.viewPager)
+
+        val tileSubject = LayoutInflater.from(this).inflate(R.layout.tile_subject, null)
+        val tileSubject2 = LayoutInflater.from(this).inflate(R.layout.tile_subject, null)
+
+        val subjectLayout = findViewById<LinearLayout>(R.id.subjectTable)
+
+        val tileParams = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT,
+        )
+        tileParams.setMargins(0,0,0,20)
+
+        subjectLayout.addView(tileSubject, tileParams)
+
+        val tileParams2 = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT,
+        )
+        tileParams2.setMargins(0,20,0,0)
+
+        subjectLayout.addView(tileSubject2, tileParams2)
+
 
     }
 
