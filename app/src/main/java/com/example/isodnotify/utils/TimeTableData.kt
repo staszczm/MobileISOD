@@ -4,8 +4,8 @@ import java.util.Date
 
 data class TimeTableData (
     val courseName: String,
-    val startTime: Date,
-    val endTime: Date,
+    val startTime: Date?,
+    val endTime: Date?,
     val dayOfWeek: Int,
     val building: String,
     val typeOfClasses: String,
