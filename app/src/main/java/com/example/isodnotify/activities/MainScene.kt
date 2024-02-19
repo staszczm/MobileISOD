@@ -10,11 +10,13 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.isodnotify.R
 import com.example.isodnotify.databinding.ActivityMainSceneBinding
 import com.example.isodnotify.tiles.NewsTile
+import com.example.isodnotify.tiles.SubjectTile
+import com.example.isodnotify.utils.TimeTableData
 import me.relex.circleindicator.CircleIndicator3
+import java.util.*
 
 class MainScene : AppCompatActivity() {
     private lateinit var binding: ActivityMainSceneBinding
-//    private var titlesList = mutableListOf<String>()
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,8 +46,25 @@ class MainScene : AppCompatActivity() {
         val indicator = findViewById<CircleIndicator3>(R.id.indicator)
         indicator.setViewPager(binding.viewPager)
 
-        val tileSubject = LayoutInflater.from(this).inflate(R.layout.tile_subject, null)
-        val tileSubject2 = LayoutInflater.from(this).inflate(R.layout.tile_subject, null)
+        val startTime = Calendar.getInstance()
+        startTime.set(2024, Calendar.FEBRUARY, 20, 8, 0)
+
+        val endTime = Calendar.getInstance()
+        endTime.set(2024, Calendar.FEBRUARY, 20, 10, 0)
+
+
+        val startTime2 = Calendar.getInstance()
+        startTime2.set(2024, Calendar.FEBRUARY, 20, 12, 0)
+
+        val endTime2 = Calendar.getInstance()
+        endTime2.set(2024, Calendar.FEBRUARY, 20, 16, 0)
+
+
+        val timeTableData = TimeTableData("Wychowanie fizyczne 3", startTime.time, endTime.time, 1, "Budynek YOLO", "Zajęcia", "siema")
+        val timeTableData2 = TimeTableData("Angielski 2", startTime2.time, endTime2.time, 1, "Budynek DUPCIA", "Zajęcia", "siema")
+
+        val tile = SubjectTile(this, timeTableData)
+        val tile2 = SubjectTile(this, timeTableData2)
 
         val subjectLayout = findViewById<LinearLayout>(R.id.subjectTable)
 
@@ -55,7 +74,7 @@ class MainScene : AppCompatActivity() {
         )
         tileParams.setMargins(0,0,0,20)
 
-        subjectLayout.addView(tileSubject, tileParams)
+        subjectLayout.addView(tile, tileParams)
 
         val tileParams2 = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.MATCH_PARENT,
@@ -63,7 +82,7 @@ class MainScene : AppCompatActivity() {
         )
         tileParams2.setMargins(0,20,0,0)
 
-        subjectLayout.addView(tileSubject2, tileParams2)
+        subjectLayout.addView(tile2, tileParams2)
 
 
     }
