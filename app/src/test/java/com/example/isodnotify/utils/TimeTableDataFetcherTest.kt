@@ -2,10 +2,9 @@ package com.example.isodnotify.utils
 
 import org.junit.Test
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert.*
 import org.junit.Before
 
-class TimeTableDataFetcherTeste{
+class TimeTableDataFetcherTest{
     private lateinit var fetcher: TimeTableDataFetcher
     @Before
     fun setUp() {
@@ -15,10 +14,10 @@ class TimeTableDataFetcherTeste{
     }
 
     @Test
-    fun GeneralTest(){
+    fun generalTest(){
         runBlocking {
-            val lista = fetcher.getAllData()
-            for (i in lista){
+            val list = fetcher.getAllData()
+            for (i in list){
                 println(i)
             }
         }

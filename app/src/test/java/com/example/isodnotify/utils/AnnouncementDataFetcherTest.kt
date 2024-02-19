@@ -2,7 +2,6 @@ package com.example.isodnotify.utils
 
 import org.junit.Test
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert.*
 import org.junit.Before
 
 class AnnouncementDataFetcherTest{
