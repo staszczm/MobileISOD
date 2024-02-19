@@ -14,8 +14,9 @@ interface JsonDataFetcher<T> {
     private suspend fun getJsonDataFromUrl(url: String): String{
         return URL(url).readText()
     }
-    fun getAllData(): List<T>{
-        val itemsArray = JSONObject().getJSONArray(getJsonArrayName())
+    suspend fun getAllData(): List<T>{
+        val jsonData = getJsonDataFromUrl(createUrlFromNameAndApi())
+        val itemsArray = JSONObject(jsonData).getJSONArray(getJsonArrayName())
         val itemsList = mutableListOf<T>()
 
         for (i in 0 until itemsArray.length()) {
