@@ -11,7 +11,7 @@ interface JsonDataFetcher<T> {
     private fun createUrlFromNameAndApi(): String {
         return "https://isod.ee.pw.edu.pl/isod-portal/wapi?q=${getQueryParameters()}&username=$name&apikey=$apiKey"
     }
-    private suspend fun getJsonDataFromUrl(url: String): String{
+    private fun getJsonDataFromUrl(url: String): String{
         return URL(url).readText()
     }
     suspend fun getAllData(): List<T>{
