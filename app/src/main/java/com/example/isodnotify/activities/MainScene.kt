@@ -3,20 +3,27 @@ package com.example.isodnotify.activities
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
+import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
 import com.example.isodnotify.R
 import com.example.isodnotify.databinding.ActivityMainSceneBinding
 import com.example.isodnotify.tiles.NewsTile
 import com.example.isodnotify.tiles.SubjectTile
 import com.example.isodnotify.utils.TimeTableData
+import com.example.isodnotify.utils.TimeTableDataFetcher
+import kotlinx.coroutines.launch
 import me.relex.circleindicator.CircleIndicator3
 import java.util.*
 
 class MainScene : AppCompatActivity() {
     private lateinit var binding: ActivityMainSceneBinding
+    private lateinit var userName: String
+    private lateinit var apiKey: String
+    private lateinit var isodInfo: List<TimeTableData>
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,8 +31,13 @@ class MainScene : AppCompatActivity() {
         binding = ActivityMainSceneBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        if(intent.hasExtra("USER_NAME")) {
+        if(intent.hasExtra("USER_NAME") && intent.hasExtra("API_KEY")) {
             binding.welcomeText.text = "Cześć, " + intent.getStringExtra("USER_NAME")
+            userName = intent.getStringExtra("USER_NAME").toString()
+            apiKey = intent.getStringExtra("API_KEY").toString()
+
+            Log.d("INFO", "$userName $apiKey")
+
         }
 
         var titlesList : MutableList<String> = mutableListOf()

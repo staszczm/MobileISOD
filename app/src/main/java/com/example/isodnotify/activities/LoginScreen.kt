@@ -29,7 +29,7 @@ class LoginScreen : AppCompatActivity() {
             lifecycleScope.launch {
                 val result = validateLoginCredentials(username, apiKey)
                 if (result) {
-                    correctInput(username)
+                    correctInput(username, apiKey)
                     //TODO: Navigate to next screen
                     //findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
                 } else {
@@ -81,9 +81,10 @@ class LoginScreen : AppCompatActivity() {
         binding.apiKeyInputTile.setTextAppearance(R.style.LogInInputTileError)
     }
 
-    private fun correctInput(username: String) {
+    private fun correctInput(username: String, apiKey: String) {
         val mainScene = Intent(applicationContext, MainScene::class.java)
         mainScene.putExtra("USER_NAME", username)
+        mainScene.putExtra("API_KEY", apiKey)
         startActivity(mainScene)
     }
 
