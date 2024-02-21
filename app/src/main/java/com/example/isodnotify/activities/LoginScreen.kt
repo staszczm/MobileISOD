@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.lifecycleScope
+import com.example.isodnotify.R
 import com.example.isodnotify.databinding.ActivityLoginScreenBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -28,11 +29,12 @@ class LoginScreen : AppCompatActivity() {
             lifecycleScope.launch {
                 val result = validateLoginCredentials(username, apiKey)
                 if (result) {
-                    println("dziala")
+                    correctInput(username)
                     //TODO: Navigate to next screen
                     //findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
                 } else {
-                    println("nie dziala")
+                    wrongInput()
+                    println("niedziala")
                     //TODO: Show error message
                     //Toast.makeText(context, "Invalid username or password", Toast.LENGTH_SHORT).show()
                 }
@@ -71,4 +73,18 @@ class LoginScreen : AppCompatActivity() {
     }
 
 // ********************************************************
+    private fun wrongInput() {
+        binding.usernameInputTile.setBackgroundResource(R.drawable.lm_log_input_tile_error)
+        binding.usernameInputTile.setTextAppearance(R.style.LogInInputTileError)
+
+        binding.apiKeyInputTile.setBackgroundResource(R.drawable.lm_log_input_tile_error)
+        binding.apiKeyInputTile.setTextAppearance(R.style.LogInInputTileError)
+    }
+
+    private fun correctInput(username: String) {
+        val mainScene = Intent(applicationContext, MainScene::class.java)
+        mainScene.putExtra("USER_NAME", username)
+        startActivity(mainScene)
+    }
+
 }

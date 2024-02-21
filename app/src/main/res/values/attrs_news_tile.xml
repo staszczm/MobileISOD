@@ -1,0 +1,5 @@
+<resources>
+    <declare-styleable name="NewsTile">
+        <attr name="news" format="string"/>
+    </declare-styleable>
+</resources>

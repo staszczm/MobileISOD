@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">ISODnotify</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
@@ -15,5 +15,15 @@
     <string name="api_key">Klucz API</string>
     <string name="where_api_key">Gdzie znaleźć klucz API?</string>
     <string name="log_in">Zaloguj</string>
-    <string name="l">zaloguJ</string>
+    <string name="action_notifications">Notifications</string>
+    <string name="nearest_exams">Najbliższy egzamin/zaliczenie</string>
+    <string name="show_all">Rozwiń</string>
+    <string name="action_job_offers">Job offers</string>
+    <string name="job_offers">Oferty pracy</string>
+    <string name="news_title" tools:ignore="ExtraTranslation">Aktualności</string>
+    <string name="upcoming_classes">Najbliższe zajęcia</string>
+    <string name="time1">8:15</string>
+    <string name="time2">10:00</string>
+    <string name="subject_name">Nazwa przedmiotu</string>
+    <string name="building_name">Sala</string>
 </resources>
