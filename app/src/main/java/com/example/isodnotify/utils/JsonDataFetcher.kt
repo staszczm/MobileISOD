@@ -2,6 +2,8 @@ package com.example.isodnotify.utils
 
 import org.json.JSONObject
 import java.net.URL
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 interface JsonDataFetcher<T> {
     val name: String
@@ -11,8 +13,14 @@ interface JsonDataFetcher<T> {
     private fun createUrlFromNameAndApi(): String {
         return "https://isod.ee.pw.edu.pl/isod-portal/wapi?q=${getQueryParameters()}&username=$name&apikey=$apiKey"
     }
-    private fun getJsonDataFromUrl(url: String): String{
-        return URL(url).readText()
+    private suspend fun getJsonDataFromUrl(url: String): String{
+        return withContext(Dispatchers.IO) {
+            try {
+                URL(url).readText()
+            } catch (e: Exception) {
+                throw NetworkException("Network request failed", e)
+            }
+        }
     }
     suspend fun getAllData(): List<T>{
         val jsonData = getJsonDataFromUrl(createUrlFromNameAndApi())
@@ -25,6 +33,9 @@ interface JsonDataFetcher<T> {
         }
         return itemsList
     }
+
     fun getImportantInformation(item: JSONObject): T
 
 }
+
+class NetworkException(message: String, cause: Throwable) : Exception(message, cause)
