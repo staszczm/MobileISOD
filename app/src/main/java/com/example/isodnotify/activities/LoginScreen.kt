@@ -6,7 +6,6 @@ import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
-import android.util.Log
 import android.view.View
 import androidx.lifecycle.lifecycleScope
 import androidx.appcompat.app.AppCompatActivity
@@ -35,9 +34,6 @@ class LoginScreen : AppCompatActivity() {
         binding = ActivityLoginScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        Log.e("SHAREDPREFERENCES", "clearing shared preferences")
-//        clearSharedPreferences()
-
         sharedpreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE)
         binding.usernameInputTile.text = sharedpreferences.getString(USERNAME_KEY, "")!!.toEditable()
         binding.apiKeyInputTile.text = sharedpreferences.getString(API_KEY, "")!!.toEditable()
@@ -49,18 +45,12 @@ class LoginScreen : AppCompatActivity() {
                 val result = validateLoginCredentials(username!!, apiKey!!)
                 if (result) {
                     correctInput(username!!, apiKey!!)
-                    //TODO: Navigate to next screen
-                    //findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
                 } else {
-                    wrongInput()
-                    println("niedziala")
-                    //TODO: Show error message
-                    //Toast.makeText(context, "Invalid username or password", Toast.LENGTH_SHORT).show()
+                    showInputError()
                 }
             }
         }
     }
-
     private suspend fun validateLoginCredentials(username: String, apiKey: String): Boolean {
         if (username.isEmpty() || apiKey.isEmpty()) {
             return false
@@ -76,9 +66,6 @@ class LoginScreen : AppCompatActivity() {
             }
         }
     }
-
-//  *** Funkcja do otwierania strony gdzie jest API key ***
-
     fun whereToApiTextOnClick(view: View) {
         gotoURL()
     }
@@ -90,33 +77,25 @@ class LoginScreen : AppCompatActivity() {
         val chooserIntent = Intent.createChooser(intent, "Wybierz aplikację")
         startActivity(chooserIntent)
     }
-
-// ********************************************************
-    private fun wrongInput() {
+    private fun showInputError() {
         binding.usernameInputTile.setBackgroundResource(R.drawable.lm_log_input_tile_error)
         binding.usernameInputTile.setTextAppearance(R.style.LogInInputTileError)
-
         binding.apiKeyInputTile.setBackgroundResource(R.drawable.lm_log_input_tile_error)
         binding.apiKeyInputTile.setTextAppearance(R.style.LogInInputTileError)
     }
-
     private fun correctInput(username: String, apiKey: String) {
-        val editor = sharedpreferences.edit()
-        editor.putString(USERNAME_KEY, username)
-        editor.putString(API_KEY, apiKey)
-        editor.apply()
+        saveCredentials(username, apiKey)
 
         val mainScene = Intent(applicationContext, MainScene::class.java)
         mainScene.putExtra("USER_NAME", username)
         startActivity(mainScene)
     }
-
-    private fun clearSharedPreferences() {
-        val editor = sharedpreferences.edit()
-        editor.clear()
-        editor.apply()
+    private fun saveCredentials(username: String, apiKey: String) {
+        sharedpreferences.edit().apply() {
+            putString(USERNAME_KEY, username)
+            putString(API_KEY, apiKey)
+            apply()
+        }
     }
-
     private fun String.toEditable(): Editable =  Editable.Factory.getInstance().newEditable(this)
-
 }
