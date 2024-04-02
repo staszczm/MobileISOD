@@ -1,8 +1,10 @@
 package com.example.isodnotify.activities
 
+import android.content.Context
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
@@ -23,6 +25,11 @@ class MainScene : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainSceneBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val sharedpreferences = getSharedPreferences(LoginScreen.SHARED_PREFS, Context.MODE_PRIVATE)
+        val username = sharedpreferences.getString(LoginScreen.USERNAME_KEY, "")
+
+        Log.e("DUUUPA", username.toString())
 
         if(intent.hasExtra("USER_NAME")) {
             binding.welcomeText.text = "Cześć, " + intent.getStringExtra("USER_NAME")
