@@ -101,10 +101,7 @@ class MainScene : AppCompatActivity() {
             apiKey = intent.getStringExtra("API_KEY").toString()
         }
 
-
-
     }
-
 
 }
 
