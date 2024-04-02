@@ -1,14 +1,14 @@
 package com.example.isodnotify.activities
 
 import android.content.Context
+import android.text.Editable
 import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
 import android.view.View
 import androidx.lifecycle.lifecycleScope
-import androidx.appcompat.app.AppCompatActivity
 import com.example.isodnotify.R
 import com.example.isodnotify.databinding.ActivityLoginScreenBinding
 import kotlinx.coroutines.Dispatchers
@@ -77,19 +77,23 @@ class LoginScreen : AppCompatActivity() {
         val chooserIntent = Intent.createChooser(intent, "Wybierz aplikację")
         startActivity(chooserIntent)
     }
+
+// ********************************************************
     private fun showInputError() {
         binding.usernameInputTile.setBackgroundResource(R.drawable.lm_log_input_tile_error)
         binding.usernameInputTile.setTextAppearance(R.style.LogInInputTileError)
         binding.apiKeyInputTile.setBackgroundResource(R.drawable.lm_log_input_tile_error)
         binding.apiKeyInputTile.setTextAppearance(R.style.LogInInputTileError)
     }
+
     private fun correctInput(username: String, apiKey: String) {
         saveCredentials(username, apiKey)
-
         val mainScene = Intent(applicationContext, MainScene::class.java)
         mainScene.putExtra("USER_NAME", username)
+        mainScene.putExtra("API_KEY", apiKey)
         startActivity(mainScene)
     }
+
     private fun saveCredentials(username: String, apiKey: String) {
         sharedpreferences.edit().apply() {
             putString(USERNAME_KEY, username)
