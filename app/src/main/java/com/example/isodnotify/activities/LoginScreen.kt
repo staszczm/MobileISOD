@@ -78,7 +78,6 @@ class LoginScreen : AppCompatActivity() {
         startActivity(chooserIntent)
     }
 
-// ********************************************************
     private fun showInputError() {
         binding.usernameInputTile.setBackgroundResource(R.drawable.lm_log_input_tile_error)
         binding.usernameInputTile.setTextAppearance(R.style.LogInInputTileError)
@@ -88,6 +87,7 @@ class LoginScreen : AppCompatActivity() {
 
     private fun correctInput(username: String, apiKey: String) {
         saveCredentials(username, apiKey)
+        // TODO: Duplikacja danych
         val mainScene = Intent(applicationContext, MainScene::class.java)
         mainScene.putExtra("USER_NAME", username)
         mainScene.putExtra("API_KEY", apiKey)
