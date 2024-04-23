@@ -7,11 +7,12 @@
 **MobileIsod** is an Android application developed in Kotlin and Java, using the Gradle build system. The application is designed to provide notifications from the [ISOD portal](https://isod.ee.pw.edu.pl) of the Warsaw University of Technology Electrical Engineering faculty.
 
 ## Preview
-<div style="width: 100%;">
+<div style="width: 100%;" align=center>
   <div style="display: flex;">
     <img src="screenshots/login.svg" width=33% />
     <img src="screenshots/main.svg" width=33%/>
     <img src="screenshots/schedule.svg" width=33%/>
+    <img src="screenshots/settings.svg" width=33%/>
   </div>
 </div>
 ## Features
