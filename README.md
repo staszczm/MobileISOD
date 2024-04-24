@@ -15,6 +15,7 @@
     <img src="screenshots/settings.svg" width=33%/>
   </div>
 </div>
+
 ## Features
 
 - User authentication with username and API key
